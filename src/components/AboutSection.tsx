@@ -3,6 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import CVCard from './CVCard';
+import ProfileImage from './ProfileImage';
 import { Heart, Shield, Users, Zap } from 'lucide-react';
 
 const AboutSection = () => {
@@ -28,18 +29,7 @@ const AboutSection = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           {/* Left Column: Image & CV */}
           <div className="lg:col-span-5 space-y-8">
-            <div className="relative group aspect-square overflow-hidden rounded-[2.5rem] border border-white/10 bg-white/5">
-              <motion.img 
-                src="/profile.jpg" 
-                alt="Neliswa Mapisa" 
-                className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105 grayscale-[0.2] group-hover:grayscale-0"
-                initial={{ scale: 1.1, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 1 }}
-              />
-              <div className="absolute inset-0 border border-transparent group-hover:border-red-500/30 rounded-[2.5rem] transition-all duration-500 pointer-events-none" />
-            </div>
-            
+            <ProfileImage />
             <CVCard />
           </div>
 
