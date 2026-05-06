@@ -6,33 +6,24 @@
   :root {
     --background: 0 0% 0%;
     --foreground: 0 0% 100%;
-
     --card: 0 0% 3%;
     --card-foreground: 0 0% 100%;
-
-    --popover: 0 0% 3%;
+    --popover: 0 0% 2%;
     --popover-foreground: 0 0% 100%;
-
     --primary: 0 100% 50%;
     --primary-foreground: 0 0% 100%;
-
-    --secondary: 0 0% 15%;
+    --secondary: 0 0% 10%;
     --secondary-foreground: 0 0% 100%;
-
-    --muted: 0 0% 15%;
-    --muted-foreground: 0 0% 60%;
-
+    --muted: 0 0% 12%;
+    --muted-foreground: 0 0% 50%;
     --accent: 0 100% 50%;
     --accent-foreground: 0 0% 100%;
-
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
-
-    --border: 0 0% 15%;
-    --input: 0 0% 15%;
+    --border: 0 0% 12%;
+    --input: 0 0% 12%;
     --ring: 0 100% 50%;
-
-    --radius: 0.75rem;
+    --radius: 1rem;
   }
 }
 
@@ -41,28 +32,35 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground antialiased selection:bg-red-500/30;
+    @apply bg-background text-foreground antialiased selection:bg-red-500/30 overflow-x-hidden;
     font-feature-settings: "ss01", "ss02", "cv01", "cv02";
   }
 }
 
-.red-glow {
-  box-shadow: 0 0 40px -10px rgba(255, 0, 0, 0.3);
+@layer components {
+  .ui-panel {
+    @apply bg-white/[0.02] backdrop-blur-2xl border border-white/[0.05] rounded-[2rem] p-8 md:p-12;
+  }
+  
+  .ui-card {
+    @apply bg-white/[0.03] border border-white/[0.05] rounded-2xl p-6 transition-all duration-500 hover:bg-white/[0.05] hover:border-red-500/30 hover:-translate-y-1;
+  }
+
+  .red-glow-subtle {
+    box-shadow: 0 0 60px -20px rgba(255, 0, 0, 0.15);
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
 }
 
-.text-glow {
-  text-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+@keyframes slow-drift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(2%, 2%) scale(1.05); }
+  66% { transform: translate(-1%, 3%) scale(0.95); }
 }
 
-.glass-panel {
-  @apply bg-white/5 backdrop-blur-xl border border-white/10;
-}
-
-@keyframes pulse-glow {
-  0%, 100% { opacity: 0.3; transform: scale(1); }
-  50% { opacity: 0.6; transform: scale(1.1); }
-}
-
-.animate-pulse-glow {
-  animation: pulse-glow 8s ease-in-out infinite;
+.animate-slow-drift {
+  animation: slow-drift 20s ease-in-out infinite;
 }

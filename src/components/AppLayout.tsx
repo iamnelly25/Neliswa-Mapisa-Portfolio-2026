@@ -1,18 +1,16 @@
 "use client";
 
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React from 'react';
+import { motion } from 'framer-motion';
 import { 
-  Menu, 
-  X, 
   User, 
   Code2, 
   Briefcase, 
   Mail,
   Github,
-  Linkedin
+  Linkedin,
+  Hexagon
 } from 'lucide-react';
-import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
 interface AppLayoutProps {
@@ -22,8 +20,6 @@ interface AppLayoutProps {
 }
 
 const AppLayout = ({ children, activeSection, setActiveSection }: AppLayoutProps) => {
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-
   const navItems = [
     { id: 'about', label: 'About', icon: User },
     { id: 'skills', label: 'Skills', icon: Code2 },
@@ -32,107 +28,131 @@ const AppLayout = ({ children, activeSection, setActiveSection }: AppLayoutProps
   ];
 
   return (
-    <div className="relative min-h-screen w-full overflow-hidden">
-      {/* Header / Nav Trigger */}
-      <header className="fixed top-0 left-0 right-0 z-50 p-6 flex justify-between items-center">
-        <motion.div 
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          className="text-xl font-bold tracking-tighter text-white"
-        >
-          NM<span className="text-red-600">.</span>
-        </motion.div>
-        
-        <Button
-          variant="ghost"
-          size="icon"
-          onClick={() => setIsDrawerOpen(true)}
-          className="text-white hover:bg-white/10 rounded-full"
-        >
-          <Menu className="w-6 h-6" />
-        </Button>
-      </header>
+    <div className="flex min-h-screen bg-black">
+      {/* Persistent Sidebar */}
+      <aside className="fixed left-0 top-0 bottom-0 w-20 md:w-24 border-r border-white/5 bg-black/50 backdrop-blur-xl z-50 flex flex-col items-center py-10">
+        <div className="mb-12">
+          <div className="w-12 h-12 rounded-2xl bg-red-600/10 flex items-center justify-center border border-red-500/20">
+            <Hexagon className="w-6 h-6 text-red-500 fill-red-500/20" />
+          </div>
+        </div>
 
-      {/* Drawer Navigation */}
-      <AnimatePresence>
-        {isDrawerOpen && (
-          <>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setIsDrawerOpen(false)}
-              className="fixed inset-0 z-[60] bg-black/60 backdrop-blur-sm"
-            />
-            <motion.div
-              initial={{ x: '-100%' }}
-              animate={{ x: 0 }}
-              exit={{ x: '-100%' }}
-              transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-              className="fixed top-0 left-0 bottom-0 z-[70] w-full max-w-[300px] bg-black border-r border-white/10 p-8 flex flex-col"
+        <nav className="flex-1 flex flex-col gap-6">
+          {navItems.map((item) => (
+            <button
+              key={item.id}
+              onClick={() => setActiveSection(item.id)}
+              className={cn(
+                "group relative p-4 rounded-2xl transition-all duration-300",
+                activeSection === item.id 
+                  ? "bg-red-600/10 text-red-500" 
+                  : "text-muted-foreground hover:text-white hover:bg-white/5"
+              )}
             >
-              <div className="flex justify-between items-center mb-12">
-                <span className="text-xl font-bold text-white">Menu</span>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  onClick={() => setIsDrawerOpen(false)}
-                  className="text-white hover:bg-white/10 rounded-full"
-                >
-                  <X className="w-6 h-6" />
-                </Button>
-              </div>
+              <item.icon className="w-6 h-6" />
+              {/* Tooltip */}
+              <span className="absolute left-full ml-4 px-3 py-1.5 bg-white/10 backdrop-blur-md border border-white/10 rounded-lg text-xs font-medium opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity whitespace-nowrap z-50">
+                {item.label}
+              </span>
+              {activeSection === item.id && (
+                <motion.div 
+                  layoutId="activeNav"
+                  className="absolute left-0 top-1/4 bottom-1/4 w-1 bg-red-500 rounded-full"
+                />
+              )}
+            </button>
+          ))}
+        </nav>
 
-              <nav className="flex-1 space-y-2">
-                {navItems.map((item) => (
-                  <button
-                    key={item.id}
-                    onClick={() => {
-                      setActiveSection(item.id);
-                      setIsDrawerOpen(false);
-                    }}
-                    className={cn(
-                      "w-full flex items-center gap-4 px-4 py-4 rounded-xl transition-all duration-300 group",
-                      activeSection === item.id 
-                        ? "bg-red-600/10 text-red-500 border border-red-500/20" 
-                        : "text-muted-foreground hover:text-white hover:bg-white/5"
-                    )}
-                  >
-                    <item.icon className={cn(
-                      "w-5 h-5 transition-transform group-hover:scale-110",
-                      activeSection === item.id ? "text-red-500" : "text-muted-foreground"
-                    )} />
-                    <span className="font-medium tracking-wide">{item.label}</span>
-                  </button>
-                ))}
-              </nav>
+        <div className="flex flex-col gap-4 mt-auto">
+          <a href="https://github.com/iamnelly25" target="_blank" rel="noreferrer" className="p-3 text-muted-foreground hover:text-white transition-colors">
+            <Github className="w-5 h-5" />
+          </a>
+          <a href="https://www.linkedin.com/in/neliswa-mapisa-41a09727a/" target="_blank" rel="noreferrer" className="p-3 text-muted-foreground hover:text-white transition-colors">
+            <Linkedin className="w-5 h-5" />
+          </a>
+<dyad-write path="src/components/AppLayout.tsx" description="Completing the persistent sidebar navigation and main content area layout.">
+"use client";
 
-              <div className="pt-8 border-t border-white/10 flex gap-4">
-                <a href="https://github.com/iamnelly25" target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-white transition-colors">
-                  <Github className="w-5 h-5" />
-                </a>
-                <a href="https://www.linkedin.com/in/neliswa-mapisa-41a09727a/" target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-white transition-colors">
-                  <Linkedin className="w-5 h-5" />
-                </a>
-              </div>
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
+import React from 'react';
+import { motion } from 'framer-motion';
+import { 
+  User, 
+  Code2, 
+  Briefcase, 
+  Mail,
+  Github,
+  Linkedin,
+  Hexagon
+} from 'lucide-react';
+import { cn } from '@/lib/utils';
+
+interface AppLayoutProps {
+  children: React.ReactNode;
+  activeSection: string;
+  setActiveSection: (section: string) => void;
+}
+
+const AppLayout = ({ children, activeSection, setActiveSection }: AppLayoutProps) => {
+  const navItems = [
+    { id: 'about', label: 'About', icon: User },
+    { id: 'skills', label: 'Skills', icon: Code2 },
+    { id: 'projects', label: 'Projects', icon: Briefcase },
+    { id: 'contact', label: 'Contact', icon: Mail },
+  ];
+
+  return (
+    <div className="flex min-h-screen bg-black">
+      {/* Persistent Sidebar */}
+      <aside className="fixed left-0 top-0 bottom-0 w-20 md:w-24 border-r border-white/5 bg-black/50 backdrop-blur-xl z-50 flex flex-col items-center py-10">
+        <div className="mb-12">
+          <div className="w-12 h-12 rounded-2xl bg-red-600/10 flex items-center justify-center border border-red-500/20">
+            <Hexagon className="w-6 h-6 text-red-500 fill-red-500/20" />
+          </div>
+        </div>
+
+        <nav className="flex-1 flex flex-col gap-6">
+          {navItems.map((item) => (
+            <button
+              key={item.id}
+              onClick={() => setActiveSection(item.id)}
+              className={cn(
+                "group relative p-4 rounded-2xl transition-all duration-300",
+                activeSection === item.id 
+                  ? "bg-red-600/10 text-red-500" 
+                  : "text-muted-foreground hover:text-white hover:bg-white/5"
+              )}
+            >
+              <item.icon className="w-6 h-6" />
+              {/* Tooltip */}
+              <span className="absolute left-full ml-4 px-3 py-1.5 bg-white/10 backdrop-blur-md border border-white/10 rounded-lg text-xs font-medium opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity whitespace-nowrap z-50">
+                {item.label}
+              </span>
+              {activeSection === item.id && (
+                <motion.div 
+                  layoutId="activeNav"
+                  className="absolute left-0 top-1/4 bottom-1/4 w-1 bg-red-500 rounded-full"
+                />
+              )}
+            </button>
+          ))}
+        </nav>
+
+        <div className="flex flex-col gap-4 mt-auto">
+          <a href="https://github.com/iamnelly25" target="_blank" rel="noreferrer" className="p-3 text-muted-foreground hover:text-white transition-colors">
+            <Github className="w-5 h-5" />
+          </a>
+          <a href="https://www.linkedin.com/in/neliswa-mapisa-41a09727a/" target="_blank" rel="noreferrer" className="p-3 text-muted-foreground hover:text-white transition-colors">
+            <Linkedin className="w-5 h-5" />
+          </a>
+        </div>
+      </aside>
 
       {/* Main Content Area */}
-      <main className="relative z-10 pt-24 pb-12 px-6 md:px-12 max-w-6xl mx-auto">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={activeSection}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
-          >
-            {children}
-          </motion.div>
-        </AnimatePresence>
+      <main className="flex-1 ml-20 md:ml-24 p-6 md:p-12 lg:p-20">
+        <div className="max-w-6xl mx-auto">
+          {children}
+        </div>
       </main>
     </div>
   );
