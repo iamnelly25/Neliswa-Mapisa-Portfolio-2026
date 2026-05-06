@@ -11,7 +11,8 @@ interface CVCardProps {
 }
 
 const CVCard = ({ variant = 'full', className }: CVCardProps) => {
-  const cvPath = "/Neliswa-Mapisa-CV.pdf";
+  // Updated to match the filename you provided
+  const cvPath = "/Neliswa_Mapisa_CV_2026.pdf";
 
   if (variant === 'compact') {
     return (

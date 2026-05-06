@@ -3,7 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { ChevronRight, Sparkles } from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
 
 interface IntroScreenProps {
   onEnter: () => void;
@@ -24,16 +24,6 @@ const IntroScreen = ({ onEnter }: IntroScreenProps) => {
             className="space-y-8 max-w-xl"
           >
             <div className="space-y-4">
-              <motion.div 
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.2 }}
-                className="flex items-center gap-2 text-red-500 font-semibold tracking-[0.2em] uppercase text-xs"
-              >
-                <Sparkles className="w-4 h-4" />
-                Portfolio 2024
-              </motion.div>
-              
               <h1 className="text-6xl md:text-8xl font-bold tracking-tighter text-white leading-[0.9]">
                 Neliswa <br />
                 <span className="text-white/40">Mapisa</span>
