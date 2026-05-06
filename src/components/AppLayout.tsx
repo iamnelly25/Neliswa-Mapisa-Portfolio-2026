@@ -9,7 +9,8 @@ import {
   Mail,
   Github,
   Linkedin,
-  Hexagon
+  Hexagon,
+  History
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -22,6 +23,7 @@ interface AppLayoutProps {
 const AppLayout = ({ children, activeSection, setActiveSection }: AppLayoutProps) => {
   const navItems = [
     { id: 'about', label: 'About', icon: User },
+    { id: 'experience', label: 'Experience', icon: History },
     { id: 'skills', label: 'Skills', icon: Code2 },
     { id: 'projects', label: 'Projects', icon: Briefcase },
     { id: 'contact', label: 'Contact', icon: Mail },

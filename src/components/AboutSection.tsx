@@ -3,8 +3,16 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import CVCard from './CVCard';
+import { Heart, Shield, Users, Zap } from 'lucide-react';
 
 const AboutSection = () => {
+  const values = [
+    { icon: Heart, title: "Empathy", desc: "Understanding user needs beyond the interface." },
+    { icon: Shield, title: "Integrity", desc: "Building reliable, ethical digital systems." },
+    { icon: Users, title: "Inclusion", desc: "Ensuring technology is accessible to everyone." },
+    { icon: Zap, title: "Impact", desc: "Focusing on solutions that drive social change." }
+  ];
+
   return (
     <motion.div 
       initial={{ opacity: 0, y: 20 }}
@@ -16,7 +24,7 @@ const AboutSection = () => {
         <h3 className="text-4xl md:text-6xl font-bold text-white tracking-tighter">About Me</h3>
       </div>
 
-      <div className="ui-panel red-glow-subtle">
+      <div className="ui-panel border-white/5 bg-white/[0.01]">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           {/* Left Column: Image & CV */}
           <div className="lg:col-span-5 space-y-8">
@@ -24,64 +32,43 @@ const AboutSection = () => {
               <motion.img 
                 src="/profile.jpg" 
                 alt="Neliswa Mapisa" 
-                className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110"
-                initial={{ scale: 1.2, opacity: 0 }}
+                className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105 grayscale-[0.2] group-hover:grayscale-0"
+                initial={{ scale: 1.1, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 0.8 }}
+                transition={{ duration: 1 }}
               />
-              <div className="absolute inset-0 border-2 border-transparent group-hover:border-red-500/50 rounded-[2.5rem] transition-all duration-500 pointer-events-none" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute inset-0 border border-transparent group-hover:border-red-500/30 rounded-[2.5rem] transition-all duration-500 pointer-events-none" />
             </div>
             
             <CVCard />
           </div>
 
-          {/* Right Column: Bio & Stats */}
+          {/* Right Column: Bio */}
           <div className="lg:col-span-7 space-y-8">
             <p className="text-3xl md:text-4xl font-bold text-white leading-tight tracking-tight">
-              Technology with a <span className="text-red-500">human touch.</span>
+              Building <span className="text-red-500">human-centered</span> digital systems.
             </p>
             
             <div className="space-y-6 text-muted-foreground text-lg leading-relaxed">
               <p>
-                I'm Neliswa Mapisa — an IT professional, AI enthusiast, and software developer with a genuine heart for people. I don't just build systems; I build bridges between technology and the humans who use it.
+                I'm Neliswa Mapisa — an IT professional and software developer with a social work foundation. I don't just build systems; I build bridges between technology and the humans who use it.
               </p>
               <p>
-                My journey spans IT system support, AI prompt engineering, and software development — but what sets me apart is a deep understanding of people. I am also a qualified Social Worker, and that shapes how I approach every technical challenge with empathy, patience, and human-centred thinking.
+                My journey spans IT system support and software development, but what sets me apart is a deep understanding of people. As a qualified Social Worker, I approach every technical challenge with empathy, patience, and human-centred thinking.
               </p>
               <p>
-                Whether troubleshooting systems, building AI tools, or developing software, I bring both technical precision and emotional intelligence to every project.
-              </p>
-              <p>
-                Based in South Africa, I am passionate about using technology for empowerment and real-world impact.
+                Whether troubleshooting systems or developing software, I bring both technical precision and emotional intelligence to every project, ensuring technology serves the user, not the other way around.
               </p>
             </div>
 
-            <div className="p-8 rounded-3xl bg-white/[0.03] border border-white/5 space-y-6">
-              <h4 className="text-white font-semibold uppercase tracking-wider text-xs">Core Philosophy</h4>
-              <div className="space-y-4">
-                {[
-                  { label: "Empathy-Driven Support", value: 100 },
-                  { label: "Technical Precision", value: 95 },
-                  { label: "AI Integration", value: 90 },
-                  { label: "Human-Centric Design", value: 100 }
-                ].map((item) => (
-                  <div key={item.label} className="space-y-2">
-                    <div className="flex justify-between text-xs font-medium">
-                      <span className="text-muted-foreground">{item.label}</span>
-                      <span className="text-red-500">{item.value}%</span>
-                    </div>
-                    <div className="h-1 w-full bg-white/5 rounded-full overflow-hidden">
-                      <motion.div 
-                        initial={{ width: 0 }}
-                        animate={{ width: `${item.value}%` }}
-                        transition={{ duration: 1.5, delay: 0.5 }}
-                        className="h-full bg-red-600"
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
+            <div className="grid grid-cols-2 gap-4 pt-4">
+              {values.map((val, idx) => (
+                <div key={idx} className="p-4 rounded-2xl bg-white/[0.02] border border-white/5">
+                  <val.icon className="w-5 h-5 text-red-500 mb-3" />
+                  <h5 className="text-white font-bold text-sm mb-1">{val.title}</h5>
+                  <p className="text-xs text-muted-foreground leading-relaxed">{val.desc}</p>
+                </div>
+              ))}
             </div>
           </div>
         </div>

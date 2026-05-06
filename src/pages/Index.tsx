@@ -9,6 +9,7 @@ import AboutSection from '@/components/AboutSection';
 import SkillsSection from '@/components/SkillsSection';
 import ProjectsSection from '@/components/ProjectsSection';
 import ContactSection from '@/components/ContactSection';
+import ExperienceSection from '@/components/ExperienceSection';
 
 const Index = () => {
   const [hasEntered, setHasEntered] = useState(false);
@@ -18,6 +19,8 @@ const Index = () => {
     switch (activeSection) {
       case 'about':
         return <AboutSection />;
+      case 'experience':
+        return <ExperienceSection />;
       case 'skills':
         return <SkillsSection />;
       case 'projects':
