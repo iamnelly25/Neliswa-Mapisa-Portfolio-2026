@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import CVCard from './CVCard';
 
 const AboutSection = () => {
   return (
@@ -17,6 +18,25 @@ const AboutSection = () => {
 
       <div className="ui-panel red-glow-subtle">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+          {/* Left Column: Image & CV */}
+          <div className="lg:col-span-5 space-y-8">
+            <div className="relative group aspect-square overflow-hidden rounded-[2.5rem] border border-white/10 bg-white/5">
+              <motion.img 
+                src="/profile.jpg" 
+                alt="Neliswa Mapisa" 
+                className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110"
+                initial={{ scale: 1.2, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.8 }}
+              />
+              <div className="absolute inset-0 border-2 border-transparent group-hover:border-red-500/50 rounded-[2.5rem] transition-all duration-500 pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            </div>
+            
+            <CVCard />
+          </div>
+
+          {/* Right Column: Bio & Stats */}
           <div className="lg:col-span-7 space-y-8">
             <p className="text-3xl md:text-4xl font-bold text-white leading-tight tracking-tight">
               Technology with a <span className="text-red-500">human touch.</span>
@@ -36,9 +56,7 @@ const AboutSection = () => {
                 Based in South Africa, I am passionate about using technology for empowerment and real-world impact.
               </p>
             </div>
-          </div>
 
-          <div className="lg:col-span-5 flex flex-col justify-center">
             <div className="p-8 rounded-3xl bg-white/[0.03] border border-white/5 space-y-6">
               <h4 className="text-white font-semibold uppercase tracking-wider text-xs">Core Philosophy</h4>
               <div className="space-y-4">

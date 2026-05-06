@@ -4,6 +4,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Github, Linkedin, ArrowRight, Globe } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import CVCard from './CVCard';
 
 const ContactSection = () => {
   const contacts = [
@@ -60,6 +61,10 @@ const ContactSection = () => {
                   <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:text-red-500 group-hover:translate-x-1 transition-all" />
                 </a>
               ))}
+              
+              <div className="pt-4">
+                <CVCard variant="compact" />
+              </div>
             </div>
           </div>
 
