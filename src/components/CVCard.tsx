@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { FileText, Eye, Download } from 'lucide-react';
-import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
 interface CVCardProps {
@@ -11,8 +10,10 @@ interface CVCardProps {
 }
 
 const CVCard = ({ variant = 'full', className }: CVCardProps) => {
-  // Updated to match the latest filename provided
+  // This path points to the 'public' folder
   const cvPath = "/Neliswa_Mapisa_CV_2026_v3.pdf";
+
+  const buttonBase = "inline-flex items-center justify-center rounded-xl transition-all duration-300 font-medium text-sm h-12 px-6";
 
   if (variant === 'compact') {
     return (
@@ -30,16 +31,23 @@ const CVCard = ({ variant = 'full', className }: CVCardProps) => {
           </div>
         </div>
         <div className="flex gap-2">
-          <Button variant="ghost" size="icon" asChild className="h-8 w-8 rounded-full hover:bg-red-600 hover:text-white">
-            <a href={cvPath} target="_blank" rel="noreferrer">
-              <Eye className="w-4 h-4" />
-            </a>
-          </Button>
-          <Button variant="ghost" size="icon" asChild className="h-8 w-8 rounded-full hover:bg-red-600 hover:text-white">
-            <a href={cvPath} download>
-              <Download className="w-4 h-4" />
-            </a>
-          </Button>
+          <a 
+            href={cvPath} 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="p-2 rounded-full text-muted-foreground hover:bg-red-600 hover:text-white transition-colors"
+            title="View CV"
+          >
+            <Eye className="w-4 h-4" />
+          </a>
+          <a 
+            href={cvPath} 
+            download
+            className="p-2 rounded-full text-muted-foreground hover:bg-red-600 hover:text-white transition-colors"
+            title="Download CV"
+          >
+            <Download className="w-4 h-4" />
+          </a>
         </div>
       </div>
     );
@@ -61,25 +69,23 @@ const CVCard = ({ variant = 'full', className }: CVCardProps) => {
       </div>
 
       <div className="grid grid-cols-2 gap-4">
-        <Button 
-          asChild
-          variant="outline" 
-          className="h-12 rounded-xl border-white/10 bg-white/5 hover:bg-red-600 hover:text-white hover:border-red-600 transition-all group"
+        <a 
+          href={cvPath} 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className={cn(buttonBase, "border border-white/10 bg-white/5 text-white hover:bg-red-600 hover:border-red-600 group")}
         >
-          <a href={cvPath} target="_blank" rel="noreferrer">
-            <Eye className="mr-2 w-4 h-4 group-hover:scale-110 transition-transform" />
-            View CV
-          </a>
-        </Button>
-        <Button 
-          asChild
-          className="h-12 rounded-xl bg-red-600 hover:bg-red-700 text-white red-glow transition-all group"
+          <Eye className="mr-2 w-4 h-4 group-hover:scale-110 transition-transform" />
+          View CV
+        </a>
+        <a 
+          href={cvPath} 
+          download
+          className={cn(buttonBase, "bg-red-600 text-white hover:bg-red-700 red-glow group")}
         >
-          <a href={cvPath} download>
-            <Download className="mr-2 w-4 h-4 group-hover:translate-y-0.5 transition-transform" />
-            Download
-          </a>
-        </Button>
+          <Download className="mr-2 w-4 h-4 group-hover:translate-y-0.5 transition-transform" />
+          Download
+        </a>
       </div>
     </div>
   );
