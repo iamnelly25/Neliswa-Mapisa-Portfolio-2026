@@ -42,12 +42,12 @@ const ProjectsSection = () => {
     },
     {
       title: "AccessiGo",
-      description: "An accessibility-focused platform designed to bridge the gap in digital inclusion, ensuring technology is usable by everyone.",
-      problem: "Digital platforms frequently exclude users with disabilities due to poor accessibility standards.",
-      solution: "Provides an inclusive framework that prioritizes accessibility as a core feature rather than an afterthought.",
-      tags: ["Accessibility", "Inclusive", "Lovable"],
-      status: "Coming Soon",
-      icon: Sparkles,
+      description: "A mobility platform connecting wheelchair users with accessible public transport, featuring real-time tracking and route planning.",
+      problem: "People with disabilities face significant barriers to independent travel due to fragmented information on accessible transport options.",
+      solution: "Empowers users to travel confidently by providing real-time tracking and booking, while partnering with authorities to promote inclusive mobility.",
+      tags: ["Mobility", "Accessibility", "Social Impact"],
+      status: "In Development",
+      icon: Globe,
       color: "from-purple-600/20",
       link: "#"
     }
