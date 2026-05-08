@@ -31,13 +31,13 @@ const ProjectsSection = () => {
     },
     {
       title: "StyleLab",
-      description: "A modern fashion-tech platform currently in development on the Lovable platform, focusing on personalized style discovery.",
-      problem: "Users often feel overwhelmed by fashion choices that don't reflect their personal identity.",
-      solution: "Leverages AI to curate personalized style recommendations that align with individual preferences.",
-      tags: ["Lovable", "UI/UX", "AI"],
+      description: "A premium virtual salon and e-commerce platform for wigs and weaves, featuring an AI-powered virtual try-on experience.",
+      problem: "Customers often struggle to visualize how different wig styles or hair colors will look on them before making a purchase.",
+      solution: "Integrates a user-friendly virtual try-on tool where users upload photos to preview various weaves and colors in real-time.",
+      tags: ["E-commerce", "Virtual Try-On", "AI Styling", "Vibrant"],
       status: "In Development",
       icon: Layers,
-      color: "from-blue-600/20",
+      color: "from-pink-600/20",
       link: "#"
     },
     {
