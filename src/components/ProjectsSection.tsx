@@ -1,8 +1,8 @@
 "use client";
 
 import React from 'react';
-import { motion } from 'framer-motion';
-import { ArrowUpRight, Code2, Layers, Sparkles } from 'lucide-react';
+import { motion } from 'from-motion';
+import { ArrowUpRight, Code2, Layers, Sparkles, Globe } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const ProjectsSection = () => {
@@ -15,7 +15,19 @@ const ProjectsSection = () => {
       tags: ["React", "Supabase", "PDF"],
       status: "Live",
       icon: Code2,
-      color: "from-red-600/20"
+      color: "from-red-600/20",
+      link: "#"
+    },
+    {
+      title: "Community Support Portal",
+      description: "A platform designed to facilitate community support and resource allocation, currently being prototyped on Lovable.",
+      problem: "Communities often lack a centralized, accessible way to request and coordinate local support services.",
+      solution: "Provides a streamlined interface for connecting individuals with community resources and volunteers.",
+      tags: ["Lovable", "Social Impact", "Web"],
+      status: "In Development",
+      icon: Globe,
+      color: "from-emerald-600/20",
+      link: "https://lovable.dev/projects/5e557f5d-7e75-44f5-b2c5-d708442f15e7"
     },
     {
       title: "StyleLab",
@@ -25,7 +37,8 @@ const ProjectsSection = () => {
       tags: ["Lovable", "UI/UX", "AI"],
       status: "In Development",
       icon: Layers,
-      color: "from-blue-600/20"
+      color: "from-blue-600/20",
+      link: "#"
     },
     {
       title: "AccessiGo",
@@ -35,7 +48,8 @@ const ProjectsSection = () => {
       tags: ["Accessibility", "Inclusive", "Lovable"],
       status: "Coming Soon",
       icon: Sparkles,
-      color: "from-purple-600/20"
+      color: "from-purple-600/20",
+      link: "#"
     }
   ];
 
@@ -100,8 +114,15 @@ const ProjectsSection = () => {
                     <span key={tag} className="text-[10px] text-white/40 font-bold uppercase tracking-widest">#{tag}</span>
                   ))}
                 </div>
-                <Button variant="ghost" size="icon" className="w-12 h-12 rounded-full bg-white/5 hover:bg-red-600 hover:text-white transition-all duration-500">
-                  <ArrowUpRight className="w-5 h-5" />
+                <Button 
+                  asChild
+                  variant="ghost" 
+                  size="icon" 
+                  className="w-12 h-12 rounded-full bg-white/5 hover:bg-red-600 hover:text-white transition-all duration-500"
+                >
+                  <a href={project.link} target="_blank" rel="noopener noreferrer">
+                    <ArrowUpRight className="w-5 h-5" />
+                  </a>
                 </Button>
               </div>
             </div>
