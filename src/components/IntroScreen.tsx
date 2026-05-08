@@ -3,7 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { ChevronRight, Sparkles, MousePointer2 } from 'lucide-react';
+import { ChevronRight, MousePointer2 } from 'lucide-react';
 
 interface IntroScreenProps {
   onEnter: () => void;
@@ -23,16 +23,6 @@ const IntroScreen = ({ onEnter }: IntroScreenProps) => {
             className="space-y-12"
           >
             <div className="space-y-6">
-              <motion.div 
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.5 }}
-                className="flex items-center gap-2 text-red-500 font-bold tracking-[0.4em] uppercase text-xs"
-              >
-                <Sparkles className="w-4 h-4" />
-                <span>Portfolio 2025</span>
-              </motion.div>
-              
               <h1 className="text-7xl md:text-9xl font-bold tracking-tighter text-white leading-[0.85]">
                 Neliswa <br />
                 <span className="text-gradient">Mapisa</span>
