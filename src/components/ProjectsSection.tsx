@@ -13,7 +13,7 @@ const ProjectsSection = () => {
       problem: "Manual affidavit creation is time-consuming and prone to formatting errors.",
       solution: "Automates the process with structured inputs and instant PDF generation for legal consistency.",
       tags: ["React", "Supabase", "PDF"],
-      status: "Live",
+      status: "In Development",
       icon: Code2,
       color: "from-red-600/20",
       link: "#"
