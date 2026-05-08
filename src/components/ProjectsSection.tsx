@@ -10,6 +10,8 @@ const ProjectsSection = () => {
     {
       title: "SAPS Affidavit Generator",
       description: "A specialized tool built using Dyad and Supabase to streamline the creation of structured affidavits with PDF output capabilities.",
+      problem: "Manual affidavit creation is time-consuming and prone to formatting errors.",
+      solution: "Automates the process with structured inputs and instant PDF generation for legal consistency.",
       tags: ["React", "Supabase", "PDF"],
       status: "Live",
       icon: Code2,
@@ -18,6 +20,8 @@ const ProjectsSection = () => {
     {
       title: "StyleLab",
       description: "A modern fashion-tech platform currently in development on the Lovable platform, focusing on personalized style discovery.",
+      problem: "Users often feel overwhelmed by fashion choices that don't reflect their personal identity.",
+      solution: "Leverages AI to curate personalized style recommendations that align with individual preferences.",
       tags: ["Lovable", "UI/UX", "AI"],
       status: "In Development",
       icon: Layers,
@@ -26,6 +30,8 @@ const ProjectsSection = () => {
     {
       title: "AccessiGo",
       description: "An accessibility-focused platform designed to bridge the gap in digital inclusion, ensuring technology is usable by everyone.",
+      problem: "Digital platforms frequently exclude users with disabilities due to poor accessibility standards.",
+      solution: "Provides an inclusive framework that prioritizes accessibility as a core feature rather than an afterthought.",
       tags: ["Accessibility", "Inclusive", "Lovable"],
       status: "Coming Soon",
       icon: Sparkles,
@@ -66,13 +72,26 @@ const ProjectsSection = () => {
                 </span>
               </div>
 
-              <div className="flex-1 space-y-6">
-                <h4 className="text-3xl font-bold text-white group-hover:text-red-500 transition-colors duration-500">
-                  {project.title}
-                </h4>
-                <p className="text-muted-foreground text-lg leading-relaxed font-medium">
-                  {project.description}
-                </p>
+              <div className="flex-1 space-y-8">
+                <div className="space-y-4">
+                  <h4 className="text-3xl font-bold text-white group-hover:text-red-500 transition-colors duration-500">
+                    {project.title}
+                  </h4>
+                  <p className="text-muted-foreground text-lg leading-relaxed font-medium">
+                    {project.description}
+                  </p>
+                </div>
+
+                <div className="space-y-6 pt-4 border-t border-white/5">
+                  <div className="space-y-2">
+                    <p className="text-[10px] font-bold text-red-500 uppercase tracking-widest">Problem Statement</p>
+                    <p className="text-sm text-white/70 leading-relaxed">{project.problem}</p>
+                  </div>
+                  <div className="space-y-2">
+                    <p className="text-[10px] font-bold text-red-500 uppercase tracking-widest">Solution</p>
+                    <p className="text-sm text-white/70 leading-relaxed">{project.solution}</p>
+                  </div>
+                </div>
               </div>
 
               <div className="mt-12 pt-8 border-t border-white/5 flex items-center justify-between">
