@@ -23,7 +23,7 @@
     --border: 0 0% 12%;
     --input: 0 0% 12%;
     --ring: 0 100% 50%;
-    --radius: 1rem;
+    --radius: 1.5rem;
   }
 }
 
@@ -35,23 +35,31 @@
     @apply bg-background text-foreground antialiased selection:bg-red-500/30 overflow-x-hidden;
     font-feature-settings: "ss01", "ss02", "cv01", "cv02";
   }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply tracking-tighter font-bold;
+  }
 }
 
 @layer components {
-  .ui-panel {
-    @apply bg-white/[0.02] backdrop-blur-2xl border border-white/[0.05] rounded-[2rem] p-8 md:p-12;
+  .glass-panel {
+    @apply bg-white/[0.02] backdrop-blur-2xl border border-white/[0.05] rounded-[2.5rem];
   }
   
   .ui-card {
-    @apply bg-white/[0.03] border border-white/[0.05] rounded-2xl p-6 transition-all duration-500 hover:bg-white/[0.05] hover:border-red-500/30 hover:-translate-y-1;
+    @apply bg-white/[0.03] border border-white/[0.05] rounded-3xl p-8 transition-all duration-700 hover:bg-white/[0.06] hover:border-red-500/40 hover:-translate-y-2;
+  }
+
+  .red-glow {
+    box-shadow: 0 0 40px -10px rgba(255, 0, 0, 0.3);
   }
 
   .red-glow-subtle {
     box-shadow: 0 0 60px -20px rgba(255, 0, 0, 0.15);
   }
 
-  .text-balance {
-    text-wrap: balance;
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-b from-white to-white/40;
   }
 }
 
@@ -63,4 +71,8 @@
 
 .animate-slow-drift {
   animation: slow-drift 20s ease-in-out infinite;
+}
+
+.perspective-1000 {
+  perspective: 1000px;
 }

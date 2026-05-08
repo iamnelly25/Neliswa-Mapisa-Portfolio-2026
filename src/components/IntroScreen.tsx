@@ -3,7 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { ChevronRight } from 'lucide-react';
+import { ChevronRight, Sparkles } from 'lucide-react';
 
 interface IntroScreenProps {
   onEnter: () => void;
@@ -12,76 +12,80 @@ interface IntroScreenProps {
 const IntroScreen = ({ onEnter }: IntroScreenProps) => {
   return (
     <div className="relative min-h-screen w-full bg-black overflow-hidden flex items-center">
-      {/* Split Layout Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-2 w-full h-full min-h-screen">
         
-        {/* LEFT: Content */}
-        <div className="flex flex-col justify-center px-8 md:px-16 lg:px-24 py-20 z-10">
+        {/* Content Side */}
+        <div className="flex flex-col justify-center px-8 md:px-16 lg:px-32 py-20 z-10">
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="space-y-8 max-w-xl"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            className="space-y-12 max-w-2xl"
           >
-            <div className="space-y-4">
-              <h1 className="text-6xl md:text-8xl font-bold tracking-tighter text-white leading-[0.9]">
+            <div className="space-y-6">
+              <motion.div 
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.5 }}
+                className="flex items-center gap-2 text-red-500 font-bold tracking-[0.4em] uppercase text-xs"
+              >
+                <Sparkles className="w-4 h-4" />
+                <span>Portfolio 2025</span>
+              </motion.div>
+              
+              <h1 className="text-7xl md:text-9xl font-bold tracking-tighter text-white leading-[0.85]">
                 Neliswa <br />
-                <span className="text-white/40">Mapisa</span>
+                <span className="text-gradient">Mapisa</span>
               </h1>
               
-              <p className="text-xl md:text-2xl text-muted-foreground font-medium leading-relaxed">
-                IT System Support | AI Enthusiast | Software Developer
+              <p className="text-2xl md:text-3xl text-muted-foreground font-medium leading-tight max-w-lg">
+                Bridging the gap between <span className="text-white">human empathy</span> and <span className="text-red-500">technical systems</span>.
               </p>
             </div>
 
-            <p className="text-white/60 text-lg italic border-l-2 border-red-600/50 pl-6 py-2">
-              "Technology with a human touch."
-            </p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6 }}
-            >
+            <div className="flex flex-col sm:flex-row gap-6 items-start sm:items-center">
               <Button 
                 onClick={onEnter}
-                className="group h-16 px-10 text-lg rounded-2xl bg-red-600 hover:bg-red-700 text-white border-none red-glow transition-all duration-500"
+                className="group h-16 px-12 text-lg rounded-full bg-red-600 hover:bg-red-700 text-white border-none red-glow transition-all duration-500"
               >
-                Enter Portfolio
+                Explore Journey
                 <ChevronRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Button>
-            </motion.div>
+              
+              <p className="text-white/40 text-sm font-medium tracking-widest uppercase">
+                IT Support • AI • Social Impact
+              </p>
+            </div>
           </motion.div>
         </div>
 
-        {/* RIGHT: Visual Panel */}
-        <div className="hidden lg:block relative overflow-hidden bg-white/[0.02] border-l border-white/5">
+        {/* Visual Side */}
+        <div className="hidden lg:block relative overflow-hidden bg-white/[0.01] border-l border-white/5">
           <div className="absolute inset-0 flex items-center justify-center">
-            {/* Abstract Glowing Visual */}
-            <div className="relative w-[80%] aspect-square">
+            <div className="relative w-[70%] aspect-square">
               <motion.div 
                 animate={{ 
                   rotate: 360,
-                  scale: [1, 1.1, 1],
+                  scale: [1, 1.05, 1],
                 }}
                 transition={{ 
-                  duration: 20, 
+                  duration: 30, 
                   repeat: Infinity, 
                   ease: "linear" 
                 }}
-                className="absolute inset-0 rounded-full bg-gradient-to-tr from-red-600/20 via-transparent to-red-900/10 blur-[100px]"
+                className="absolute inset-0 rounded-full bg-gradient-to-tr from-red-600/10 via-transparent to-red-900/5 blur-[120px]"
               />
-              <div className="absolute inset-0 border border-white/5 rounded-[3rem] rotate-12 animate-slow-drift" />
-              <div className="absolute inset-0 border border-white/5 rounded-[3rem] -rotate-6 animate-slow-drift" style={{ animationDelay: '-5s' }} />
+              
+              {/* Floating Geometric Elements */}
+              <div className="absolute inset-0 border border-white/5 rounded-[4rem] rotate-12 animate-slow-drift" />
+              <div className="absolute inset-0 border border-white/5 rounded-[4rem] -rotate-6 animate-slow-drift" style={{ animationDelay: '-7s' }} />
               
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-32 h-32 rounded-full bg-red-600/20 blur-3xl animate-pulse" />
+                <div className="w-48 h-48 rounded-full bg-red-600/10 blur-[80px] animate-pulse" />
+                <div className="relative z-10 text-[20rem] font-bold text-white/[0.02] select-none">NM</div>
               </div>
             </div>
           </div>
-          
-          {/* Noise Overlay */}
-          <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.05] pointer-events-none" />
         </div>
       </div>
     </div>
