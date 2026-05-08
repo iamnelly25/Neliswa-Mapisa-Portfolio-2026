@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import { motion } from 'from-motion';
+import { motion } from 'framer-motion';
 import { ArrowUpRight, Code2, Layers, Sparkles, Globe } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
