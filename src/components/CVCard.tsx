@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import { FileText, Eye, Download } from 'lucide-react';
+import { FileText, Download } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface CVCardProps {
@@ -33,15 +33,6 @@ const CVCard = ({ variant = 'full', className }: CVCardProps) => {
         <div className="flex gap-2">
           <a 
             href={cvPath} 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="p-2 rounded-full text-muted-foreground hover:bg-red-600 hover:text-white transition-colors"
-            title="View CV"
-          >
-            <Eye className="w-4 h-4" />
-          </a>
-          <a 
-            href={cvPath} 
             download
             className="p-2 rounded-full text-muted-foreground hover:bg-red-600 hover:text-white transition-colors"
             title="Download CV"
@@ -68,23 +59,14 @@ const CVCard = ({ variant = 'full', className }: CVCardProps) => {
         </div>
       </div>
 
-      <div className="grid grid-cols-2 gap-4">
-        <a 
-          href={cvPath} 
-          target="_blank" 
-          rel="noopener noreferrer"
-          className={cn(buttonBase, "border border-white/10 bg-white/5 text-white hover:bg-red-600 hover:border-red-600 group")}
-        >
-          <Eye className="mr-2 w-4 h-4 group-hover:scale-110 transition-transform" />
-          View CV
-        </a>
+      <div className="flex justify-center">
         <a 
           href={cvPath} 
           download
-          className={cn(buttonBase, "bg-red-600 text-white hover:bg-red-700 red-glow group")}
+          className={cn(buttonBase, "w-full bg-red-600 text-white hover:bg-red-700 red-glow group")}
         >
           <Download className="mr-2 w-4 h-4 group-hover:translate-y-0.5 transition-transform" />
-          Download
+          Download CV
         </a>
       </div>
     </div>

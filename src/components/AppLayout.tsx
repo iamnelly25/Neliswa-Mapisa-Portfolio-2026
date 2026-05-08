@@ -11,8 +11,7 @@ import {
   Github,
   Linkedin,
   Hexagon,
-  History,
-  Sparkles
+  History
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -91,10 +90,10 @@ const AppLayout = ({ children, activeSection, setActiveSection }: AppLayoutProps
         </nav>
 
         <div className="flex flex-col gap-5 mt-auto">
-          <a href="https://github.com/iamnelly25" target="_blank" rel="noreferrer" className="p-2.5 text-muted-foreground hover:text-red-500 transition-all duration-500 hover:scale-110">
+          <a href="https://github.com/iamnelly25" target="_blank" rel="noopener noreferrer" className="p-2.5 text-muted-foreground hover:text-red-500 transition-all duration-500 hover:scale-110">
             <Github className="w-4 h-4" />
           </a>
-          <a href="https://www.linkedin.com/in/neliswa-mapisa-41a09727a/" target="_blank" rel="noreferrer" className="p-2.5 text-muted-foreground hover:text-red-500 transition-all duration-500 hover:scale-110">
+          <a href="https://www.linkedin.com/in/neliswa-mapisa-41a09727a" target="_blank" rel="noopener noreferrer" className="p-2.5 text-muted-foreground hover:text-red-500 transition-all duration-500 hover:scale-110">
             <Linkedin className="w-4 h-4" />
           </a>
         </div>

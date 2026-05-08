@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Github, Linkedin, ArrowRight, Globe, Sparkles } from 'lucide-react';
+import { Mail, Github, Linkedin, ArrowRight, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import CVCard from './CVCard';
 
@@ -18,7 +18,7 @@ const ContactSection = () => {
       label: "LinkedIn",
       value: "Neliswa Mapisa",
       icon: Linkedin,
-      link: "https://www.linkedin.com/in/neliswa-mapisa-41a09727a/"
+      link: "https://www.linkedin.com/in/neliswa-mapisa-41a09727a"
     },
     {
       label: "GitHub",
@@ -55,7 +55,7 @@ const ContactSection = () => {
                   key={contact.label}
                   href={contact.link}
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                   className="flex items-center gap-6 p-6 rounded-3xl bg-white/[0.02] border border-white/5 hover:border-red-500/40 hover:bg-white/[0.04] transition-all duration-500 group"
                 >
                   <div className="w-14 h-14 rounded-2xl bg-red-600/10 flex items-center justify-center text-red-500 group-hover:scale-110 transition-transform duration-500">
