@@ -3,7 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { ChevronRight, Sparkles } from 'lucide-react';
+import { ChevronRight, Sparkles, MousePointer2 } from 'lucide-react';
 
 interface IntroScreenProps {
   onEnter: () => void;
@@ -11,16 +11,16 @@ interface IntroScreenProps {
 
 const IntroScreen = ({ onEnter }: IntroScreenProps) => {
   return (
-    <div className="relative min-h-screen w-full bg-black overflow-hidden flex items-center">
-      <div className="grid grid-cols-1 lg:grid-cols-2 w-full h-full min-h-screen">
+    <div className="relative min-h-[80vh] w-full flex items-center">
+      <div className="grid grid-cols-1 lg:grid-cols-2 w-full gap-12">
         
         {/* Content Side */}
-        <div className="flex flex-col justify-center px-8 md:px-16 lg:px-32 py-20 z-10">
+        <div className="flex flex-col justify-center z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            className="space-y-12 max-w-2xl"
+            className="space-y-12"
           >
             <div className="space-y-6">
               <motion.div 
@@ -52,38 +52,37 @@ const IntroScreen = ({ onEnter }: IntroScreenProps) => {
                 <ChevronRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Button>
               
-              <p className="text-white/40 text-sm font-medium tracking-widest uppercase">
-                IT Support • AI • Social Impact
-              </p>
+              <div className="flex items-center gap-3 text-white/40 text-sm font-medium tracking-widest uppercase">
+                <MousePointer2 className="w-4 h-4 animate-bounce" />
+                <span>Scroll to discover</span>
+              </div>
             </div>
           </motion.div>
         </div>
 
         {/* Visual Side */}
-        <div className="hidden lg:block relative overflow-hidden bg-white/[0.01] border-l border-white/5">
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="relative w-[70%] aspect-square">
-              <motion.div 
-                animate={{ 
-                  rotate: 360,
-                  scale: [1, 1.05, 1],
-                }}
-                transition={{ 
-                  duration: 30, 
-                  repeat: Infinity, 
-                  ease: "linear" 
-                }}
-                className="absolute inset-0 rounded-full bg-gradient-to-tr from-red-600/10 via-transparent to-red-900/5 blur-[120px]"
-              />
-              
-              {/* Floating Geometric Elements */}
-              <div className="absolute inset-0 border border-white/5 rounded-[4rem] rotate-12 animate-slow-drift" />
-              <div className="absolute inset-0 border border-white/5 rounded-[4rem] -rotate-6 animate-slow-drift" style={{ animationDelay: '-7s' }} />
-              
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-48 h-48 rounded-full bg-red-600/10 blur-[80px] animate-pulse" />
-                <div className="relative z-10 text-[20rem] font-bold text-white/[0.02] select-none">NM</div>
-              </div>
+        <div className="hidden lg:flex relative items-center justify-center">
+          <div className="relative w-full aspect-square max-w-md">
+            <motion.div 
+              animate={{ 
+                rotate: 360,
+                scale: [1, 1.05, 1],
+              }}
+              transition={{ 
+                duration: 30, 
+                repeat: Infinity, 
+                ease: "linear" 
+              }}
+              className="absolute inset-0 rounded-full bg-gradient-to-tr from-red-600/10 via-transparent to-red-900/5 blur-[100px]"
+            />
+            
+            {/* Floating Geometric Elements */}
+            <div className="absolute inset-0 border border-white/5 rounded-[4rem] rotate-12 animate-slow-drift" />
+            <div className="absolute inset-0 border border-white/5 rounded-[4rem] -rotate-6 animate-slow-drift" style={{ animationDelay: '-7s' }} />
+            
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="w-48 h-48 rounded-full bg-red-600/10 blur-[80px] animate-pulse" />
+              <div className="relative z-10 text-[15rem] font-bold text-white/[0.02] select-none">NM</div>
             </div>
           </div>
         </div>
