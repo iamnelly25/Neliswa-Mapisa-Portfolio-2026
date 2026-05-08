@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowUpRight, Code2, Layers, Sparkles, Globe } from 'lucide-react';
+import { ArrowUpRight, Code2, Layers, Sparkles, Globe, Music } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const ProjectsSection = () => {
@@ -19,13 +19,13 @@ const ProjectsSection = () => {
       link: "#"
     },
     {
-      title: "Community Support Portal",
-      description: "A platform designed to facilitate community support and resource allocation, currently being prototyped on Lovable.",
-      problem: "Communities often lack a centralized, accessible way to request and coordinate local support services.",
-      solution: "Provides a streamlined interface for connecting individuals with community resources and volunteers.",
-      tags: ["Lovable", "Social Impact", "Web"],
+      title: "LocalLyt",
+      description: "A vibrant ecosystem for local artists to showcase talent, promote events, and connect with supporters through profiles and discovery tools.",
+      problem: "Local creators lack a unified platform to gain visibility, manage events, and receive direct financial support from their community.",
+      solution: "Streamlines artist discovery and community engagement with integrated support features like tipping and commissions.",
+      tags: ["Lovable", "Social Impact", "Artist Hub"],
       status: "In Development",
-      icon: Globe,
+      icon: Music,
       color: "from-emerald-600/20",
       link: "https://lovable.dev/projects/5e557f5d-7e75-44f5-b2c5-d708442f15e7"
     },
